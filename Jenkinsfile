@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Code checked out from GitHub'
-            }
-        }
-
         stage('Build') {
             steps {
                 echo 'Build started'
@@ -16,7 +10,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Tests running'
+                echo 'Running tests'
+                sh 'exit 1'   // ❌ This forces failure
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying app'
             }
         }
     }
